@@ -1,5 +1,8 @@
 <?php
 
+include_once 'includes/Mic.class.php';
+include_once 'includes/Database.class.php';
+include_once 'includes/User.class.php';
 function load_template($name)
 {
     // echo __DIR__;
@@ -19,18 +22,7 @@ function validate_credentials($username, $password)
 }
 function signup($user, $pass, $email, $phone)
 {
-    $servername = "mysql.selfmade.ninja";
-    $username = "Ragunath";
-    $password = "Rkdevil49*";
-    $dbname = "Ragunath_newdb";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+    $conn = Database::getConnection();
     // $sql = "INSERT INTO MyGuests (firstname, lastname, email)
     // VALUES ('John', 'Doe', 'john@example.com')";
     $sql = "INSERT INTO `auth` (`username`, `password`, `email`, `phone`, `blocked`, `active`)
@@ -46,3 +38,4 @@ function signup($user, $pass, $email, $phone)
     return $error ;
 
 }
+
