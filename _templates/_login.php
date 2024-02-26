@@ -1,7 +1,7 @@
 <?
 $email = $_POST['email_address'];
 $password = $_POST['pass'];
-$result = validate_credentials($email, $password);
+$result = User::login($email, $password);
 if($result)
 {
   ?>
@@ -26,7 +26,7 @@ else
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input name="pass"type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input name="pass" type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
