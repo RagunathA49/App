@@ -2,8 +2,8 @@
 
 include 'libs/load.php';
 
-$user  = "ragu";
-$pass = "12345";
+$user  = "lakshmi";
+$pass = "1234";
 $result = null;
 if(isset($_GET['logout'])){
     Session::destroy();
