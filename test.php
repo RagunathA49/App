@@ -13,9 +13,9 @@ print($mic1->getbrand());
 print($mic2->getbrand());
 
 Mic::testfunction();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
+print("<br>");
+$mic1->getvoltage("hello",array(1,2,3,4,5));
+$mic1->setupvol("hi", new Mic("cast"));
 ?>
 </pre>
 

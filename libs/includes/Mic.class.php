@@ -10,7 +10,11 @@ class Mic
     public $prices;
     public static $test;
 
-
+    public function __call($name, $args){
+        print("$name \n");
+        print($args);
+        print("\n");
+    }
     public static function testfunction()
     {
         printf("This is static function, this can be run without object initialization..".Mic::$test);
@@ -31,8 +35,8 @@ class Mic
     public function setModel($model){
         $this->model = ucwords($model);
     }
-    public function __destruct(){
-        printf("Connection end ".$this->brand );    
-    }
+    // public function __destruct(){
+    //     printf("Connection end ".$this->brand );    
+    // }
 
 }
