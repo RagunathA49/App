@@ -13,6 +13,8 @@ class User
         }elseif(substr($name,0,3)=="set"){
             // print($property.",".$arguments[0]);
             return $this->_set_data($property ,$arguments[0]);
+        }else{
+            throw new Exception("User::__call() - > $name, function unavailable");
         }
     }
     public static function signup($user, $pass, $email, $phone)
@@ -46,6 +48,11 @@ class User
             // $row['password']== $pass
             if(password_verify($pass,$row['password']))
             {
+                /*
+                1.Generate Session Token
+                2.Insert Session Token
+                3.Build Sesion and give Session to user. 
+                */
                return $row['username'];
                 
             }
@@ -56,14 +63,16 @@ class User
             return false;
         }
     }
+    //User object can be constructed with both UserId and Username
     public function __construct($username)
     {
         $this->conn = Database::getConnection();
         $this->username = $username;
         $this->id = null;
-        $sql = "SELECT `id` FROM  `auth` WHERE `username` = '$username' LIMIT 1";
+        $sql = "SELECT `id` FROM  `auth` WHERE `username` = '$username' OR 'id' = '$username' LIMIT 1";
         $result = $this->conn->query($sql);
         if ($result->num_rows > 0) {
+
             $row = $result->fetch_assoc();
             $this->id = $row['id'];
         }else{
@@ -108,9 +117,6 @@ class User
     }
     public function getUsername(){
         return $this->username;
-    }
-    public function authenticate()
-    {
     }
     // public function setbio()
     // {

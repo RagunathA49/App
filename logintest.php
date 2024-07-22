@@ -9,6 +9,13 @@ if(isset($_GET['logout'])){
     Session::destroy();
     die("Session destroyed <br><br><a href='logintest.php'>Login Again</a>");
 }   
+/*
+1. Check if session_token in the PHP session is available
+2. If yes, construct UserSession and see if it's successful
+3. Check if the session is a valid one
+4. If valid, print "Session validated"
+5. Else, print "Invalid Session" and ask the user to log in.
+ */
 if (Session::get('is_loggedin')){
     $username = Session::get('session_username');
     $userobj = new User($username);

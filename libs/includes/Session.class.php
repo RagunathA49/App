@@ -8,6 +8,12 @@ Class Session {
     }
     public static function destroy(){
         session_destroy();
+        /* If usersession active  turn to inactive\
+            if yes, construct usersession and see if its successful.
+            check if the session is valid one 
+            if valid, print "Session validated"
+            Else, print "Invalid Session" and ask user to login.
+        */
     }
     public static function set($key, $value)
     {
