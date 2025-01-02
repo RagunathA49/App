@@ -5,8 +5,11 @@ include_once 'includes/Database.class.php';
 include_once 'includes/User.class.php';
 include_once 'includes/Session.class.php';
 include_once 'includes/UserSession.class.php';
-$_site_config;
+global $_site_config;
+// global $__base_path;
+
 $_site_config = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/../photogramconfig.json');
+// $__base_path=get_config('base_path');
 Session::start();
 function get_config($key,$default = null) {
     global $_site_config;
@@ -25,7 +28,7 @@ function load_template($name)
     // echo __DIR__;
     // echo __DIR__."/../templates/$name.php";
     // echo $_SERVER['DOCUMENT_ROOT']."/app/_templates/$name.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/photogram/_templates/$name.php";
+    include $_SERVER['DOCUMENT_ROOT'] .get_config('base_path')."_templates/$name.php";
 };
 
 

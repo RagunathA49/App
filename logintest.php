@@ -2,8 +2,8 @@
 
 include 'libs/load.php';
 
-$user  = "ragunath";
-$pass = "password";
+$user  = "hacker";
+$pass = "hacker1234";
 $result = null;
 if(isset($_GET['logout'])){
     Session::destroy();
@@ -18,14 +18,17 @@ if(isset($_GET['logout'])){
  */
 if (Session::get('is_loggedin')){
     $username = Session::get('session_username');
+    // print_r("\n check mate".$username);
     $userobj = new User($username);
+    // print_r($userobj);
     print("Welcome Back,".$userobj->getFirstname());
     print("<br>".$userobj->getBio());
-    $userobj->setBio("Making new things...");
+    $userobj->setBio("hacker think ur are noob");
     print("<br>".$userobj->getBio());
 }else{
     print("No session found, trying to login now.<br>");
     $result = User::login($user, $pass);
+    // print_r("check".$result);
     if($result) {
         $userobj = new User($user);
         echo "Login successful!",$userobj->getUsername();

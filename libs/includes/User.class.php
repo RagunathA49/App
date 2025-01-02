@@ -8,6 +8,7 @@ class User
     {
         $property = preg_replace("/[^0-9a-zA-Z]/", "", substr($name, 3));
         $property = strtolower(preg_replace('/\B([A-Z])/', '_$1', $property));
+        // print($property.",".$arguments[0]."<br>");
         if(substr($name,0,3)=="get"){
             return $this->_get_data($property);
         }elseif(substr($name,0,3)=="set"){
@@ -81,6 +82,7 @@ class User
     }
     private function _get_data($var)
     {
+        // print_r("inside function".$var);
         if(!$this->conn){
             $this->conn = Database::getConnection();
         }

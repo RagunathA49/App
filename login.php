@@ -31,7 +31,7 @@ include 'libs/load.php';
 <main class="form-signin w-100 m-auto">
  <?load_template('_login');?>
 </main>
-<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?=get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
